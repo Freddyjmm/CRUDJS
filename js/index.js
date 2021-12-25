@@ -15,12 +15,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
             </thead>
             <tbody id='body-table'>
                 <tr>
-                    <td> Nombre De Prueba </td>
-                    <td class="text-right">
-                        <button class="btn btn-danger mb-1 ml-1">
-                            <i class="fa fa-trash"></i>
-                        </button>
-                    </td>
                 </tr>
             </tbody>
         </table>
