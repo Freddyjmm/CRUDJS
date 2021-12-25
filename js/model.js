@@ -38,8 +38,8 @@ export default class Model{
     setId(data){
         //se recibe como 'data' un objeto creado el componente addData para establecerle un id unico
         //se aumenta el id actual y se asigna el objeto recibido
-        this.currentId++;
         data.id = this.currentId;
+        this.currentId++;
 
         return data;
     }

@@ -11,7 +11,10 @@ export default class AddData{
                 // alert.classList.remove('d-none');
                 console.error('Nombre invalido');
             } else {
-                callback({name:this.inputName.value});
+                callback(
+                    {
+                        name:this.inputName.value
+                    });
                 this.inputName.value = '';
                 this.inputName.focus();
             }

@@ -1,4 +1,5 @@
 import AddData from "./components/addData.js";
+import DeleteData from "./components/deleteData.js";
 
 export default class View{
 
@@ -17,6 +18,7 @@ export default class View{
             body[0].appendChild(node);
         }
         //components
+        this.deleteButton = new DeleteData();
         this.recordForm = new AddData();
         this.recordForm.click( (name) => {
             const newPlayer = this.addData(name);
@@ -51,7 +53,10 @@ export default class View{
         iconButton.setAttribute('class','fa fa-trash');
 
         //confiurar el boton
-        buttonDelete.setAttribute('class','btn btn-danger mb-1 ml-1');
+        buttonDelete.setAttribute('class','btn btn-danger mb-1 ml-1 dlt');
+        buttonDelete.onclick = () => {
+            this.deleteButton.getButtonById(data.id).grandParentNode.remove();
+        }
         buttonDelete.appendChild(iconButton);
 
         //configurar la celda del boton
