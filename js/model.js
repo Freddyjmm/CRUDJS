@@ -23,16 +23,24 @@ export default class Model{
         return {...newData}
     }
 
-    findData(){
-
+    findData(id){
+        const index = this.data.findIndex( (unitData) => unitData.id === id );
+        return index;
     }
 
     updateData(){
 
     }
 
-    deleteData(){
+    deleteData(id){
+        //se recibi el id del jugador a borrar, se busca en la DB y se borra
+        this.findData(id);
+        this.data.splice(id,1);
 
+    }
+
+    saveData(data){
+        localStorage.setItem('SAN', JSON.stringify(this.findData));
     }
 
     setId(data){

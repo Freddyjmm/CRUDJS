@@ -1,4 +1,5 @@
 export default class AddData{
+
     constructor(){
         this.inputName = document.getElementById('player');
         this.buttonRegister = document.getElementById('add');

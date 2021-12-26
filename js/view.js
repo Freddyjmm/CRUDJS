@@ -1,5 +1,5 @@
 import AddData from "./components/addData.js";
-import DeleteData from "./components/deleteData.js";
+
 
 export default class View{
 
@@ -18,7 +18,6 @@ export default class View{
             body[0].appendChild(node);
         }
         //components
-        this.deleteButton = new DeleteData();
         this.recordForm = new AddData();
         this.recordForm.click( (name) => {
             const newPlayer = this.addData(name);
@@ -35,6 +34,11 @@ export default class View{
         return this.model.addData(data);
     }
 
+    removeRow(id){
+        this.model.deleteData(id);
+        document.getElementById(id).remove();
+    }
+
     buildRow(data){
         //nodo padre
         const bodyTable = document.getElementById('body-table')
@@ -43,7 +47,7 @@ export default class View{
         const row = document.createElement('tr');
         const cellName = document.createElement('td');
         const cellButton = document.createElement('td');
-        const buttonDelete = document.createElement('button');
+        let buttonDelete = document.createElement('button');
         const iconButton = document.createElement('i');
 
         //configurar la celda del nombre
@@ -54,10 +58,10 @@ export default class View{
 
         //confiurar el boton
         buttonDelete.setAttribute('class','btn btn-danger mb-1 ml-1 dlt');
-        buttonDelete.onclick = () => {
-            this.deleteButton.getButtonById(data.id).grandParentNode.remove();
-        }
         buttonDelete.appendChild(iconButton);
+        buttonDelete.onclick = () => {
+            this.removeRow(data.id);
+        }
 
         //configurar la celda del boton
         cellButton.appendChild(buttonDelete);

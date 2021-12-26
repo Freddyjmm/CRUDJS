@@ -36,9 +36,18 @@ document.addEventListener('DOMContentLoaded', ()=>{
     </div>
     `;
 
+    const htmlSave = `
+        <h1>El Ganador Es:</h1>
+            <div>
+                <h1 id='winner'></h1>
+            </div>
+        <button type='button'>Guardar</button>
+    `;
+
     const model = new Model();
     const viewForm = new View(htmlForm);
     const viewTable = new View(htmlTable);
+    const viewSave = new View(htmlSave);
     viewForm.setModel(model);
     viewTable.setModel(model);
 
