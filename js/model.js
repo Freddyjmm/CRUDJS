@@ -1,8 +1,19 @@
 export default class Model{
     constructor(){
         this.view = null;
-        this.data = [];
+        this.data = JSON.parse(localStorage.getItem('SAN'));
         this.currentId = 0;
+        if (!this.data || this.data < 1){
+            this.data = [
+                {
+                    name:'Lista vacia',
+                    id:0
+                }
+            ];
+            this.currentId = 1;
+        }else {
+            this.currentId = this.data[this.data.length -1].id + 1;
+        }
     }
 
     setView(view){
@@ -40,7 +51,7 @@ export default class Model{
     }
 
     saveData(data){
-        localStorage.setItem('SAN', JSON.stringify(this.findData));
+        localStorage.setItem('SAN', JSON.stringify(this.data));
     }
 
     setId(data){

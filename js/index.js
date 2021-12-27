@@ -7,5 +7,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const view = new View();
     view.setModel(model);
     model.setView(view);
+    view.chargeModel();
 
 })

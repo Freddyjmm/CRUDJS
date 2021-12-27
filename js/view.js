@@ -22,6 +22,9 @@ export default class View{
             this.saveData.h1Winner.innerText = winnerPlayer;
             this.saveData.boxWinner.style.display = '';
         });
+        this.saveData.clickSave( () => {
+            this.model.saveData()
+        })
     }
 
     setModel(model){
@@ -73,7 +76,10 @@ export default class View{
 
     }
 
-    showWinner(){
-
+    chargeModel(){
+        const data = this.model.data;
+        for (let unitData of data){
+            this.buildRow(unitData);
+        }
     }
 }

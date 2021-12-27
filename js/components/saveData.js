@@ -15,6 +15,9 @@ export default class SaveData{
         this.buttonRaffle.onclick = () => callback();
     }
 
+    clickSave(callback){
+        this.buttonSave.onclick = () => callback();
+    }
     getPlayers(){
         const players = document.getElementsByTagName('tr');
 
