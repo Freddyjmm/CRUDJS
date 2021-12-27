@@ -1,27 +1,26 @@
 import AddData from "./components/addData.js";
+import SaveData from "./components/saveData.js";
 
 
 export default class View{
 
-    constructor(html){
-        //se establece la vista en el html
+    constructor(){
         this.model = null;
-        this.innerHtml = html;
 
-        if (!this.innerHtml){
-            console.error('html para la vista no encontrado');
-        } else {
-            const body = document.getElementsByTagName('body');
-            const node = document.createElement('div');
-            node.setAttribute('id', 'root');
-            node.innerHTML = this.innerHtml;
-            body[0].appendChild(node);
-        }
         //components
         this.recordForm = new AddData();
         this.recordForm.click( (name) => {
             const newPlayer = this.addData(name);
             this.buildRow(newPlayer);
+        });
+        this.saveData = new SaveData();
+        this.saveData.clickRaffle( () => {
+            const players = this.saveData.getPlayers();
+            const indexWinnerPlayer = this.saveData.getRandomPlayer(1,players.length-1);
+            const winnerPlayer = players[indexWinnerPlayer].cells[0].innerText;
+
+            this.saveData.h1Winner.innerText = winnerPlayer;
+            this.saveData.boxWinner.style.display = '';
         });
     }
 
@@ -71,6 +70,10 @@ export default class View{
         row.appendChild(cellName);
         row.appendChild(cellButton);
         bodyTable.appendChild(row);
+
+    }
+
+    showWinner(){
 
     }
 }

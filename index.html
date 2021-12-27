@@ -14,6 +14,46 @@
     <h1 style='text-align: center;'>San De Marina Caribe</h1>
     <h3 style='text-align: center;'>Buena Suerte!</h3>
     <br>
+    <!-- Formulario -->
+    <div>
+        <form>
+            <div class="row">
+                <div class="col-sm-3 d-sm-flex align-items-center">
+                    <input type="text" id="player" class="form-control ml-sm-2" placeholder="Nombre del Jugador" focus>
+                </div>
+                <div class="col-sm-2 d-sm-flex justify-content-end mt-4 mt-sm-0">
+                    <button type="button" class="btn btn-info btn-block" id="add"> Registrar </button>
+                </div>
+                <div class="col-sm-2 d-sm-flex justify-content-end mt-4 mt-sm-0">
+                    <button type="button" class="btn btn-danger btn-block" id="raffle"> Sortear </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- Tabla -->
+    <div class="mt-5">
+        <table class="table table-striped" id="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre de los jugadores</th>
+                    <th scope="col">
+                    </th>
+                </tr>
+            </thead>
+            <tbody id='body-table'>
+            </tbody>
+        </table>
+    </div>
+    <!-- winner -->
+    <div style='display:none;' id='box-winner'>
+        <h1 style='text-align: center;'>El Ganador Es:</h1>
+        <div>
+            <h1 id='winner' style='text-align: center;'></h1>
+        </div>
+        <div class="col-sm-2 d-sm-flex justify-content-end mt-4 mt-sm-0">
+            <button type='button' class='btn btn-info btn-block' id='save'>Guardar</button>
+        </div>
+    </div>
     <script src="./js/index.js" type='module'></script>
 </body>
 </html>
