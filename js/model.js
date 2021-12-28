@@ -4,13 +4,8 @@ export default class Model{
         this.data = JSON.parse(localStorage.getItem('SAN'));
         this.currentId = 0;
         if (!this.data || this.data < 1){
-            this.data = [
-                {
-                    name:'Lista vacia',
-                    id:0
-                }
-            ];
-            this.currentId = 1;
+            this.data = [];
+            this.currentId = 0;
         }else {
             this.currentId = this.data[this.data.length -1].id + 1;
         }

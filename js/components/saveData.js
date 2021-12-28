@@ -18,6 +18,7 @@ export default class SaveData{
     clickSave(callback){
         this.buttonSave.onclick = () => callback();
     }
+
     getPlayers(){
         const players = document.getElementsByTagName('tr');
 

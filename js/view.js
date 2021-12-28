@@ -10,17 +10,26 @@ export default class View{
         //components
         this.recordForm = new AddData();
         this.recordForm.click( (name) => {
+            if( document.getElementsByTagName('td').length > 0 ){
+                document.getElementById('raffle').disabled = false;
+            }
             const newPlayer = this.addData(name);
             this.buildRow(newPlayer);
         });
         this.saveData = new SaveData();
         this.saveData.clickRaffle( () => {
             const players = this.saveData.getPlayers();
+            if (players.length == 2){
+                this.saveData.buttonRaffle.disabled = true;
+            }
             const indexWinnerPlayer = this.saveData.getRandomPlayer(1,players.length-1);
             const winnerPlayer = players[indexWinnerPlayer].cells[0].innerText;
 
             this.saveData.h1Winner.innerText = winnerPlayer;
             this.saveData.boxWinner.style.display = '';
+            this.model.deleteData(players[indexWinnerPlayer].id)
+            this.removeRow(players[indexWinnerPlayer].id);
+            this.model.saveData();
         });
         this.saveData.clickSave( () => {
             this.model.saveData()
