@@ -32,6 +32,9 @@ export default class View{
             this.model.saveData();
         });
         this.saveData.clickSave( () => {
+            const listRow = this.saveData.getPlayers();
+            console.log(listRow);
+            this.model.updateData(listRow);
             this.model.saveData()
         })
     }

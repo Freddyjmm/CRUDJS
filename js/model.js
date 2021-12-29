@@ -34,8 +34,19 @@ export default class Model{
         return index;
     }
 
-    updateData(){
-
+    updateData(listRow){
+        const players = []
+            for (const row of listRow){
+                if(row.id === ''){
+                    continue
+                }
+                const unitPlayer = {
+                    name:row.cells[0].innerText,
+                    id:row.id
+                }
+                players.push(unitPlayer);
+            }
+            this.data = players;
     }
 
     deleteData(id){
@@ -45,7 +56,7 @@ export default class Model{
 
     }
 
-    saveData(data){
+    saveData(){
         localStorage.setItem('SAN', JSON.stringify(this.data));
     }
 
