@@ -15,28 +15,34 @@ export default class View{
             }
             const newPlayer = this.addData(name);
             this.buildRow(newPlayer);
+            //guardamos la lista de los jugadores restantes en el navegador
+            const players = this.saveData.getPlayers();
+            this.model.updateData(players);
+            this.model.saveData();
         });
         this.saveData = new SaveData();
         this.saveData.clickRaffle( () => {
+            //obtenemos un htmlcollection de los td
             const players = this.saveData.getPlayers();
-            if (players.length == 2){
+            //si tenemos solo 2 elementos en la lista desabilitamos el boton
+            if (players.length <= 1){
                 this.saveData.buttonRaffle.disabled = true;
+                return null;
             }
+            //obtenemos los datos que definen al ganador
             const indexWinnerPlayer = this.saveData.getRandomPlayer(1,players.length-1);
             const winnerPlayer = players[indexWinnerPlayer].cells[0].innerText;
-
+            //modificamos el dom para mostrar al ganador
             this.saveData.h1Winner.innerText = winnerPlayer;
             this.saveData.boxWinner.style.display = '';
-            this.model.deleteData(players[indexWinnerPlayer].id)
+            //borramos del modelo y de la vista al ganador
+            this.model.deleteData(players[indexWinnerPlayer].id);
             this.removeRow(players[indexWinnerPlayer].id);
             this.model.saveData();
+            //guardamos la lista de los jugadores restantes en el navegador
+            this.model.updateData(players);
+            this.model.saveData();
         });
-        this.saveData.clickSave( () => {
-            const listRow = this.saveData.getPlayers();
-            console.log(listRow);
-            this.model.updateData(listRow);
-            this.model.saveData()
-        })
     }
 
     setModel(model){

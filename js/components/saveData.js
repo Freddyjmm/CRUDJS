@@ -1,6 +1,5 @@
 export default class SaveData{
     constructor(){
-        this.buttonSave = document.getElementById('save');
         this.h1Winner = document.getElementById('winner');
         this.buttonRaffle = document.getElementById('raffle');
         this.boxWinner = document.getElementById('box-winner');
@@ -13,10 +12,6 @@ export default class SaveData{
 
     clickRaffle(callback){
         this.buttonRaffle.onclick = () => callback();
-    }
-
-    clickSave(callback){
-        this.buttonSave.onclick = () => callback();
     }
 
     getPlayers(){
