@@ -32,9 +32,7 @@ export default class View{
             //obtenemos los datos que definen al ganador
             const indexWinnerPlayer = this.saveData.getRandomPlayer(1,players.length-1);
             const winnerPlayer = players[indexWinnerPlayer].cells[0].innerText;
-            //modificamos el dom para mostrar al ganador
-            this.saveData.h1Winner.innerText = winnerPlayer;
-            this.saveData.boxWinner.style.display = '';
+
             //borramos del modelo y de la vista al ganador
             this.model.deleteData(players[indexWinnerPlayer].id);
             this.removeRow(players[indexWinnerPlayer].id);
@@ -42,7 +40,17 @@ export default class View{
             //guardamos la lista de los jugadores restantes en el navegador
             this.model.updateData(players);
             this.model.saveData();
-        });
+
+            //modificamos el dom para mostrar al ganador
+            this.saveData.boxWinner.setAttribute('class','d-none');
+            document.getElementById('img-container').setAttribute('class', 'container');
+            setTimeout(() => {
+                document.getElementById('img-container').setAttribute('class', 'container d-none');
+                this.saveData.h1Winner.innerText = winnerPlayer;
+                this.saveData.boxWinner.setAttribute('class','');
+            }, 2000);
+
+            });
     }
 
     setModel(model){
