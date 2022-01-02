@@ -24,9 +24,11 @@ export default class View{
         this.saveData.clickRaffle( () => {
             //obtenemos un htmlcollection de los td
             const players = this.saveData.getPlayers();
-            //si tenemos solo 2 elementos en la lista desabilitamos el boton
+            //si tenemos solo 2 elementos en la lista guardamos la lista vacia y desabilitamos el boton
             if (players.length <= 1){
                 this.saveData.buttonRaffle.disabled = true;
+                this.model.updateData(players);
+                this.model.saveData();
                 return null;
             }
             //obtenemos los datos que definen al ganador
